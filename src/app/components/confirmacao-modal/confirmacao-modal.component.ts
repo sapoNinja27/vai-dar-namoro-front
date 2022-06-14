@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MdbModalRef } from "mdb-angular-ui-kit/modal";
-import { BolsasService } from "../../link/bolsas.service";
 
 @Component({
   selector: 'app-confirmacao-modal',

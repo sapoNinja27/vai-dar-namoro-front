@@ -7,12 +7,15 @@ import { apiUrl } from "src/constants/constants";
 @Injectable({
   providedIn: "root",
 })
-export class FraseService {
+export class PaginaService {
   private path = apiUrl + "/frases";
 
   constructor(private http: HttpClient) {}
 
   publicar(pagina: Pagina): Observable<Pagina> {
     return this.http.post<Pagina>(this.path, pagina);
+  }
+  find(id: number): Observable<Pagina> {
+    return this.http.get<Pagina>(`${this.path}/${id}`);
   }
 }

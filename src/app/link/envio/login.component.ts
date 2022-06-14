@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { FraseService } from "../services/frase.service";
+import { PaginaService } from "../../services/pagina.service";
 
 @Component({
   selector: "app-login",
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     imagemId: 0
   };
 
-  constructor(private service: FraseService) {}
+  constructor(private service: PaginaService) {}
 
   ngOnInit(): void {}
 

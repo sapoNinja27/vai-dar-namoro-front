@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FraseService } from './services/frase.service';
+import { PaginaService } from './services/pagina.service';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +10,13 @@ import { FraseService } from './services/frase.service';
 export class AppComponent implements OnInit {
 
   constructor(
-    private authService: FraseService,
+    private authService: PaginaService,
     private router: Router
   ) {}
   
   ngOnInit(): void {
     
   }
-
-
   isLogin(): boolean {    
     return this.router.url === '/';
   }

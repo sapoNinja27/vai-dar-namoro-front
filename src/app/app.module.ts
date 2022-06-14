@@ -3,10 +3,9 @@ import { BrowserModule } from "@angular/platform-browser";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
-import { LoginComponent } from "./login/login.component";
-import { BolsasComponent } from "./link/bolsas.component";
+import { LoginComponent } from "./link/envio/login.component";
 import { MdbCheckboxModule } from "mdb-angular-ui-kit/checkbox";
 import { MdbCollapseModule } from "mdb-angular-ui-kit/collapse";
 import { MdbDropdownModule } from "mdb-angular-ui-kit/dropdown";
@@ -22,20 +21,12 @@ import { MdbTooltipModule } from "mdb-angular-ui-kit/tooltip";
 import { MdbValidationModule } from "mdb-angular-ui-kit/validation";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { LoadingPipe } from "./components/loading.pipe";
-import { CadastroComponent } from "./link/cadastro/cadastro.component";
 import { TableEditComponent } from "./components/table-edit/table-edit.component";
-import { InscricoesComponent } from "./candidaturas/inscricoes.component";
-import { FuncionariosComponent } from "./funcionarios/funcionarios.component";
 import { InputFileComponent } from "./components/input-file/input-file.component";
 import { ToastrModule } from "ngx-toastr";
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
-import { AlunosComponent } from './alunos/alunos.component';
 import { CpfMaskPipe } from './components/cpf/cpf-mask.pipe';
-import { CadastroAlunosComponent } from './alunos/cadastro-alunos/cadastro-alunos.component';
-import { EditaisComponent } from './link/editais/editais.component';
 import { MatSelectModule } from "@angular/material/select";
-import { EditalModalComponent } from './link/editais/edital-modal/edital-modal.component';
-import { CadastroFuncionariosComponent } from './funcionarios/cadastro-funcionarios/cadastro-funcionarios.component';
 import { NgxMaskModule } from "ngx-mask";
 import { ConfirmacaoModalComponent } from './components/confirmacao-modal/confirmacao-modal.component';
 
@@ -43,20 +34,11 @@ import { ConfirmacaoModalComponent } from './components/confirmacao-modal/confir
   declarations: [
     AppComponent,
     LoginComponent,
-    BolsasComponent,
     LoadingPipe,
-    CadastroComponent,
     TableEditComponent,
-    InscricoesComponent,
-    FuncionariosComponent,
     InputFileComponent,
     SkeletonComponent,
-    AlunosComponent,
     CpfMaskPipe,
-    CadastroAlunosComponent,
-    EditaisComponent,
-    EditalModalComponent,
-    CadastroFuncionariosComponent,
     ConfirmacaoModalComponent,
   ],
   imports: [
