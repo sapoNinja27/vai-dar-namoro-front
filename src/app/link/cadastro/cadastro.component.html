@@ -1,0 +1,150 @@
+<div class="card mb-5">
+  <div class="card-header mt-2">
+    <div class="d-flex align-items-center">
+      <a
+        class="btn btn-link btn-rounded btn-icon text-black"
+        [routerLink]="['/bolsas']"
+      >
+        <i style="font-size: 20px" class="fa fa-arrow-left"></i>
+      </a>
+      <h4 style="margin: 0">{{ isEdit ? "Editando" : "Novo" }} aluno</h4>
+    </div>
+  </div>
+
+  <app-skeleton *ngIf="isLoading"></app-skeleton>
+
+  <form [hidden]="isLoading" #formBolsa="ngForm" (ngSubmit)="save()">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12 mb-4">
+          <h5>Dados Gerais</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="md-outline mb-4">
+            <mdb-form-control>
+              <input
+                mdbInput
+                class="form-control form-control-lg"
+                type="text"
+                id="nome"
+                name="nome"
+                [(ngModel)]="bolsa.nome"
+                required
+              />
+              <label mdbLabel class="form-label" for="nome">Nome *</label>
+            </mdb-form-control>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo de bolsa</mat-label>
+            <mat-select required [(ngModel)]="bolsa.tipoBolsa" name="tipoBolsa">
+              <mat-option [value]="undefined">--</mat-option>
+              <mat-option *ngFor="let tipoBolsa of tiposBolsa" [value]="tipoBolsa.id">
+                {{ tipoBolsa.description }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="md-outline mb-4">
+            <mdb-form-control>
+              <textarea
+                mdbInput
+                class="form-control form-control-lg"
+                type="text"
+                name="descricao"
+                [(ngModel)]="bolsa.descricao"
+                required
+              ></textarea>
+              <label mdbLabel class="form-label" for="nome">Descrição *</label>
+            </mdb-form-control>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo de inscrição</mat-label>
+            <mat-select required [(ngModel)]="bolsa.tipoInscricao" name="tipoInscricao">
+              <mat-option [value]="undefined">--</mat-option>
+              <mat-option *ngFor="let tipoInscricao of tiposInscricao" [value]="tipoInscricao.id">
+                {{ tipoInscricao.description }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-8" *ngIf="bolsa.tipoInscricao === 'EXTERNA'">
+          <div class="md-outline mb-4">
+            <mdb-form-control>
+              <input
+                mdbInput
+                class="form-control form-control-lg"
+                type="url"
+                id="url"
+                name="url"
+                [(ngModel)]="bolsa.url"
+                required
+              />
+              <label mdbLabel class="form-label" for="nome">URL de inscrição externa *</label>
+            </mdb-form-control>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <app-table-edit
+        name="Requisitos"
+        [columns]="requisitosCols"
+        [model]="bolsa"
+        variable="requisitos"
+        [hasIndex]="true"
+      ></app-table-edit>
+      <hr/>
+      <app-table-edit
+        name="Documentos"
+        [columns]="documentosCols"
+        [model]="bolsa"
+        variable="documentos"
+        [hasIndex]="true"
+      ></app-table-edit>
+
+      <hr/>
+      <div class="row">
+        <div class="col-md-12">
+          <h5>Imagem</h5>
+          <p>Escolha uma imagem de capa para o cadastro da bolsa.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <app-input-file [(model)]="bolsa.fotoId"></app-input-file>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-md-12 d-flex flex-row-reverse align-items-center">
+          <button
+            class="btn btn-primary d-flex"
+            type="submit"
+            [disabled]="isSaving || formBolsa.invalid"
+          >
+            <span
+              *ngIf="isSaving"
+              class="spinner-border spinner-border-sm me-2"
+              role="status"
+              aria-hidden="true"
+            ></span>
+            <span>Salvar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,62 @@
+<section>
+  <div class="card mx-auto">
+    <div class="card-body" *ngIf="link">
+      <p>Seu link esta pronto:.</p>
+      <a href="{{enderecoLink}}" class="stretched-link">{{enderecoLink}}</a>
+    </div>
+    <div class="card-body" *ngIf="!link">
+      <div class="row">
+        <div class="col-md-12">
+          <h5>Vai dar namoro v0.3</h5>
+          <p>Gerador de paginas com mensagens para a pessoa amada.</p>
+        </div>
+      </div>
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="error" class="alert alert-danger" role="alert">
+          {{ error }}
+        </div>
+
+        <div class="md-outline mb-4">
+          <div class="row">
+            <div class="col-md-12">
+              <h5>Frase</h5>
+              <p>Escreva uma frase romantica.</p>
+            </div>
+          </div>
+          <mdb-form-control>
+            <input
+                    mdbInput
+                    class="form-control form-control-lg"
+                    name="email"
+                    [(ngModel)]="pagina.frase"
+                    required
+            />
+          </mdb-form-control>
+        </div>
+        <div class="md-outline mb-4">
+          <div class="row">
+            <div class="col-md-12">
+              <h5>Imagem</h5>
+              <p>Escolha uma imagem para a pagina.</p>
+            </div>
+          </div>
+          <mdb-form-control>
+            <div class="row">
+              <div class="col-md-8">
+                <app-input-file class="form-label" [(model)]="pagina.imagemId"></app-input-file>
+              </div>
+            </div>
+          </mdb-form-control>
+        </div>
+
+  
+        <button type="submit" class="btn btn-primary btn-block btn-lg mb-4" [disabled]="loginForm.invalid">
+          <div *ngIf="loading" class="spinner-border" role="status">
+            <span class="visually-hidden">Carregando...</span>
+          </div>
+          <span *ngIf="!loading">Enviar</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
